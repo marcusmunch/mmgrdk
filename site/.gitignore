@@ -1,0 +1,3 @@
+# Rendered Rmarkdown files
+*.html
+*.pdf
