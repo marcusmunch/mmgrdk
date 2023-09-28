@@ -1,0 +1,17 @@
+Package: mmgrdk
+Title: Personal website
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Marcus Munch", "Gr\U00FCnewald", , "mmgr@ssi.dk",
+	           comment = c(ORCID = "0009-0006-8090-406X"))
+  )
+Description: Personal website
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+    postcards,
+    rmarkdown
+URL: https://github.com/marcusmunch/mmgrdk
+BugReports: https://github.com/marcusmunch/mmgrdk/issues

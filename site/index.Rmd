@@ -1,0 +1,18 @@
+---
+title: "Marcus Munch Grünewald"
+image: "marcus.jpeg"
+links:
+  - label: Twitter
+    url: "https://twitter.com/MarcusMunch"
+  - label: GitHub
+    url: "https://github.com/MarcusMunch"
+  - label: email
+    url: "hello@marcusmunch.dk"
+output: postcards::solana
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a minimal working setup for my website.
