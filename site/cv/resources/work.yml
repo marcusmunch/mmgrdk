@@ -1,0 +1,14 @@
+ssi:
+  - title: "Data scientist"
+    workplace: "Statens Serum Institut"
+    year: "2021-"
+    department: "Epidemiological Research"
+    details: "Modeling"
+
+  - title: "Academic employee"
+    workplace: "Statens Serum Institut"
+    year: "2017-2020"
+    department: "TestCenter Danmark"
+    details:
+      - "Laboratory support"
+      - "On-call during off hours"

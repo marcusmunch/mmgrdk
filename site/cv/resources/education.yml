@@ -1,0 +1,32 @@
+master:
+  - degree: "\\textbf{Master's Thesis}"
+    institution: "Chr. Hansen A/S, University of Copenhagen"
+    year: "2018-2020"
+    where: ""
+    sort: false
+    courses:
+      - "A description of the project"
+  - degree: "MSc Biology"
+    institution: "University of Copenhagen"
+    year: "2017-2020"
+    where: ""
+    sort: true
+    courses:
+      - Linux and Python Programming
+      - Bioinformatics of High Throughput Analyses
+  - degree: "BSc Biology"
+    institution: University of Copenhagen
+    year: "2011-2016"
+    where: ""
+    sort: true
+    courses:
+      - Find some courses of note
+gymnasium:
+  - degree: "STX"
+    institution: "Greve Gymnasium"
+    year: "2005-2008"
+    where:
+    courses:
+      - Musik A
+      - Matematik B
+      - Fysik C

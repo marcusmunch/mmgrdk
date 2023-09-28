@@ -1,0 +1,82 @@
+---
+name: Marcus Munch
+surname: Grünewald
+position: "Data Scientist"
+profilepic: "../marcus.jpeg"
+www: marcusmunch.dk
+email: "hello@marcusmunch.dk"
+twitter: MarcusMunch
+github: marcusmunch
+linkedin: marcusmunch
+aboutme: "Lorem Ipsum"
+date: "`r format(Sys.Date(), '%b %y')`"
+headcolor: 333333
+bibliography: "resources/thesis.bib"
+csl: "resources/reproduction-fertility-and-development.csl"
+output:
+  vitae::awesomecv:
+   page_total: true
+  # html_document:
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+
+```{r}
+# Prepare the data
+
+all_files <- list.files("resources", pattern = "*.ya?ml", full.names = TRUE)
+
+list <- lapply(all_files, \(.x) {
+  dplyr::bind_rows(yaml::read_yaml(.x))
+})
+
+names(list) <- gsub("[.][^.]*$", "", basename(all_files))
+
+invisible(list2env(list, envir = .GlobalEnv))
+
+if (interactive()) print(list[1])
+```
+
+# Education
+
+I have chosen to specialize in programming and high-throughput analysis in order to best utilize my skills
+in data automation and programming and combine it with my interest and education in biology.
+
+```{r education}
+sorted_degrees <- education |>
+  dplyr::filter(sort) |>
+  dplyr::distinct(degree) |>
+  dplyr::pull()
+
+education <- education |>
+  dplyr::group_by(degree) |>
+  dplyr::mutate(courses = ifelse(degree %in% sorted_degrees, sort(courses), courses)) |>
+  dplyr::ungroup()
+
+education |>
+  vitae::detailed_entries(what = degree,
+                          when = year,
+                          with = institution,
+                          where = where,
+                          why = courses,
+                          .protect = FALSE)
+
+if (interactive()) print(education$courses)
+```
+
+# Work experience
+This ain't my first rodeo.
+
+```{r work}
+vitae::detailed_entries(work,
+                        what = title,
+                        when = year,
+                        with = department,
+                        where = workplace,
+                        why = details)
+```
+
