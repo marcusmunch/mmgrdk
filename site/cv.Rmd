@@ -2,7 +2,7 @@
 name: Marcus Munch
 surname: Grünewald
 position: "Data Scientist"
-profilepic: "../marcus.jpeg"
+profilepic: "marcus.jpeg"
 www: marcusmunch.dk
 email: "hello@marcusmunch.dk"
 twitter: MarcusMunch
@@ -11,8 +11,8 @@ linkedin: marcusmunch
 aboutme: "Lorem Ipsum"
 date: "`r format(Sys.Date(), '%b %y')`"
 headcolor: 333333
-bibliography: "resources/thesis.bib"
-csl: "resources/reproduction-fertility-and-development.csl"
+bibliography: "resources/cv/thesis.bib"
+csl: "resources/cv/reproduction-fertility-and-development.csl"
 output:
   vitae::awesomecv:
    page_total: true
@@ -28,7 +28,7 @@ library(vitae)
 ```{r}
 # Prepare the data
 
-all_files <- list.files("resources", pattern = "*.ya?ml", full.names = TRUE)
+all_files <- list.files("resources/cv/", pattern = "*.ya?ml", full.names = TRUE)
 
 list <- lapply(all_files, \(.x) {
   dplyr::bind_rows(yaml::read_yaml(.x))
