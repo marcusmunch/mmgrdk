@@ -21,8 +21,8 @@ jobs:
           environment: github-pages
           onlyRemoveDeployments: true
 
-  pkgdown:
-    name: Build and deploy site
+  build:
+    name: Build site
     needs: cleanup
     runs-on: ubuntu-latest
     env:
@@ -42,12 +42,17 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
 
-      - name: Build site
-        run: rmarkdown::render("site/index.Rmd")
+      - name: Render all Rmd files
+        run: lapply(list.files("site", ".*[.]Rmd$", full.names = TRUE), rmarkdown::render)
         shell: Rscript {0}
 
-      - name: Deploy to GitHub pages 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+  deploy:
+    name: Deploy to GitHub pages 🚀
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
           folder: site
