@@ -63,6 +63,9 @@ jobs:
       - uses: actions/checkout@master
 
       - uses: actions/download-artifact@master
+        with:
+          name: Rmd-files
+          path: site
 
       - name: List files in repository
         run: |
