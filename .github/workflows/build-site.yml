@@ -50,8 +50,11 @@ jobs:
     name: Deploy to GitHub pages 🚀
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     steps:
+      - name: List files in repository
+        run: |
+          find ${{ github.workspace }} -type d -name '.*' -prune -o -print
+
       - uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
