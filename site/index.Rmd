@@ -1,6 +1,6 @@
 ---
 title: "Marcus Munch Grünewald"
-image: "marcus.jpeg"
+image: "marcus2.jpeg"
 links:
   - label: Twitter
     url: "https://twitter.com/MarcusMunch"
