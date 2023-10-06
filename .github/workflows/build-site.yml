@@ -42,9 +42,20 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
 
+      - name: List files in repository
+        run: |
+          find ${{ github.workspace }} -type d -name '.*' -prune -o -print
+
       - name: Render all Rmd files
         run: lapply(list.files("site", ".*[.]Rmd$", full.names = TRUE), rmarkdown::render)
         shell: Rscript {0}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-result
+          path: |
+            site/
+            !site/*.Rmd
 
   deploy:
     name: Deploy to GitHub pages 🚀
@@ -52,7 +63,20 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/download-artifact@master
+        id: download
+        with:
+          name: build-result
+          path: site
+
+      - name: List files in repository
+        run: |
+          find ${{ github.workspace }} -type d -name '.*' -prune -o -print
+
       - uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
+          clean: false
           branch: gh-pages
-          folder: site
+          folder: ${{ steps.download.outputs.download-path }}
