@@ -53,7 +53,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: Rmd-files
-          path: site
+          path: site/
 
   deploy:
     name: Deploy to GitHub pages 🚀
@@ -63,9 +63,10 @@ jobs:
       - uses: actions/checkout@master
 
       - uses: actions/download-artifact@master
+        id: download
         with:
           name: Rmd-files
-          path: site
+          path: site/
 
       - name: List files in repository
         run: |
@@ -74,4 +75,4 @@ jobs:
       - uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
-          folder: site
+          folder: ${{ steps.download.outputs.download-path }}
