@@ -35,7 +35,7 @@ jobs:
 
   build:
     name: Build site
-    needs: [cleanup, list-rmd]
+    needs: [list-rmd]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -74,7 +74,7 @@ jobs:
 
   deploy:
     name: Deploy to GitHub pages 🚀
-    needs: build
+    needs: [cleanup, build]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
