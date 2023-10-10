@@ -91,7 +91,7 @@ jobs:
 
       - uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          clean: false
+          clean-exclude: ${{ steps.download.outputs.download-path }}
           branch: gh-pages
           folder: ${{ steps.download.outputs.download-path }}
 
