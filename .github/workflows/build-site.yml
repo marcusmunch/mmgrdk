@@ -68,8 +68,8 @@ jobs:
         with:
           name: build-result
           path: |
-            site/
-            !site/*.Rmd
+            site/**/*.html
+            site/**/*.pdf
 
   deploy:
     name: Deploy to GitHub pages 🚀
