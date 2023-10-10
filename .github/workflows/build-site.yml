@@ -69,7 +69,7 @@ jobs:
         id: download
         with:
           name: build-result
-          path: site
+          path: html
 
       - name: List files in repository
         run: |
@@ -80,3 +80,7 @@ jobs:
           clean: false
           branch: gh-pages
           folder: ${{ steps.download.outputs.download-path }}
+
+      - name: List files after build
+        run: |
+          find ${{ github.workspace }} -type d -name '.*' -prune -o -print
