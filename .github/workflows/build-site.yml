@@ -16,6 +16,7 @@ jobs:
     steps:
       - name: 🗑 Delete previous deployments
         uses: strumwolf/delete-deployment-environment@v2
+        if: github.ref == 'refs/heads/main'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: github-pages
