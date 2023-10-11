@@ -10,13 +10,15 @@ name: Deploy to GitHub Pages
 jobs:
   cleanup:
     name: 🧼 Clean up environment
+    if: |
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions: write-all
 
     steps:
       - name: 🗑 Delete previous deployments
         uses: strumwolf/delete-deployment-environment@v2
-        if: github.ref == 'refs/heads/main'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: github-pages
@@ -78,7 +80,6 @@ jobs:
     name: Deploy to GitHub pages 🚀
     needs: [cleanup, build]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@master
 
