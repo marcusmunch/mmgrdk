@@ -24,24 +24,9 @@ jobs:
           environment: github-pages
           onlyRemoveDeployments: true
 
-
-  list-rmd:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-
-    steps:
-      - uses: actions/checkout@v3
-      - id: set-matrix
-        run: echo "matrix=$(ls site/*.Rmd | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
-
   build:
     name: Build site
-    needs: [list-rmd]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        rmd: ${{ fromJson(needs.list-rmd.outputs.matrix) }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
@@ -61,15 +46,12 @@ jobs:
 
       - uses: r-lib/actions/setup-tinytex@v2
 
-      - name: List files in repository
-        run: |
-          find ${{ github.workspace }} -type d -name '.*' -prune -o -print
-
       - name: Render all Rmd files
-        run: rmarkdown::render("${{ matrix.rmd }}")
+        run: lapply(list.files("site", ".*[.]Rmd$", full.names = TRUE), rmarkdown::render)
         shell: Rscript {0}
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
           name: build-result
           path: |
