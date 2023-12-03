@@ -1,0 +1,106 @@
+---
+name: Marcus Munch
+surname: Grünewald
+position: "Data Scientist"
+profilepic: "marcus.png"
+www: marcusmunch.dk
+email: "hello@marcusmunch.dk"
+github: marcusmunch
+linkedin: marcusmunch
+aboutme: Data scientist with a background in microbiology
+date: "`r format(Sys.Date(), '%b %y')`"
+headcolor: 333333
+output:
+  vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+The story goes that I got my first computer at about 10 years old --- and never looked back since then.
+I've always loved finding patterns in complex systems, and picking up programming was therefore a no-brainer for me.
+"Hidden in plain sight" to me describes both microbiology and data science, and it therefore makes perfect sense to combine the two.
+
+```{r}
+# Prepare the data
+
+all_files <- list.files("resources/cv/", pattern = "*.ya?ml", full.names = TRUE)
+
+list <- lapply(all_files, \(.x) {
+  dplyr::bind_rows(yaml::read_yaml(.x))
+})
+
+names(list) <- gsub("[.][^.]*$", "", basename(all_files))
+
+invisible(list2env(list, envir = .GlobalEnv))
+
+if (interactive()) print(list[1])
+```
+
+# Work experience
+During my years at Statens Serum Institut, I have worked on expanding my data science skills to become greatly familiar with working in SQL databases as well as developing an R package for effectively keeping track of data over time.
+
+Despite the academic team at TestCenter Danmark being my very first position after graduating, I was trusted with many responsibilities.
+The swiftly changing setting put on us by covid-19 taught me to keep my head calm in pressured situations and gave me a lot of invaluable experience.
+
+```{r work}
+vitae::detailed_entries(work,
+                        what = title,
+                        when = year,
+                        with = department,
+                        where = workplace,
+                        why = details)
+```
+
+## Programming experience
+This CV was written in Rmarkdown, building individual sections from YAML files.
+The resulting PDF was built using pandoc on Linux.
+The source files are hosted on a GitHub repository which also builds my personal website, including this CV.
+
+In summary, I am confident working with (among others):
+
+* R, including
+  - The tidyverse
+  - Package development
+  - Automated report generation with Rmarkdown
+* Python
+  - Scraping and text mining
+  - Automating simple tasks such as file organising with minimal required input
+* Git, including GitHub and GitHub Actions
+* SQL
+  - Postgres, MSSQL and the abomination that is SQLite
+* Linux (Ubuntu), including bash
+
+\newpage
+
+# Education
+The increasing sensitivity of techniques in biology and medicine combined with increased availability of computing power drive a large demand for knowledge of both areas.
+Because of this, I tailored my MSc in biology for high-throughput analysis and data automation.
+
+```{r education}
+sorted_degrees <- education |>
+  dplyr::filter(sort) |>
+  dplyr::distinct(degree) |>
+  dplyr::pull()
+
+education <- education |>
+  dplyr::group_by(degree) |>
+  dplyr::mutate(courses = ifelse(degree %in% sorted_degrees, sort(courses), courses)) |>
+  dplyr::ungroup()
+
+education |>
+  vitae::detailed_entries(what = degree,
+                          when = year,
+                          with = institution,
+                          where = where,
+                          why = courses,
+                          .protect = FALSE)
+```
+
+# Outside work
+When I need to untangle my mind after a day of data exploration, I thankfully have numerous ways of doing so.
+While I do enjoy fiddling with various small programming projects on my Raspberry Pi at home, I also enjoy music a lot, having both played drums in a number of bands as well as in student revues during my time at university, where I have also sung and directed.
+
+I live in Østerbro, Copenhagen with my girlfriend and our two year-old daughter, who is about as fond of music as myself, and when I want to go completely off the radar, I enjoy few things more than a walk, talk or dance with her.

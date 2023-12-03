@@ -1,0 +1,40 @@
+master:
+  - degree: "\\textbf{Master's Thesis}"
+    institution: "Chr. Hansen A/S, University of Copenhagen"
+    year: "2018-2020"
+    where: ""
+    sort: false
+    courses:
+    - Collaborative work between departments of Discovery and Bacterial Physiology
+    - Analysis and visualisation of data from high throughput screening using R
+    - Automation workflows for compilation and organising data from various sources
+  - degree: "MSc Biology"
+    institution: "University of Copenhagen"
+    year: "2017-2020"
+    where: ""
+    sort: true
+    courses:
+      - Linux and Python Programming
+      - Bioinformatics of High Throughput Analyses
+      - Experimental Design and Statistical Methods in Biology
+      - Evolutionary Medicine
+      - "The Human Microbiome: Experiments"
+  - degree: "BSc Biology"
+    institution: University of Copenhagen
+    year: "2011-2016"
+    where: ""
+    sort: true
+    courses:
+      - Loading, Transport and Modelling of Pollutants in Aquatic Environments
+      - Food Microbiology
+      - Paleontology
+      - Zoophysiology
+gymnasium:
+  - degree: "STX"
+    institution: "Greve Gymnasium"
+    year: "2005-2008"
+    where:
+    courses:
+      - Music A
+      - Mathematics B
+      - Physics C

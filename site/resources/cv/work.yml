@@ -1,0 +1,21 @@
+ssi:
+  - title: "Data scientist"
+    workplace: "Statens Serum Institut"
+    year: "May 2022 --"
+    department: "Disease Dynamics and Forecasting, Epidemiological Research"
+    details:
+      - Pre-processing of data from national Danish registries for research and health surveillance purposes
+      - Consulting on strategies for optimising data pipelines
+      - Primary developer of an R package for managing data with slowly changing dimensions
+      - Managing user permissions in a smaller-scale SQL (Postgres) database
+      - Development of bash and Python scripts to standardise workflows
+      - Assisting in developing strategies for interfacing in a data warehouse context
+  - title: "Academic employee"
+    workplace: "Statens Serum Institut"
+    year: "Aug 2020 -- Apr 2022"
+    department: "TestCenter Danmark"
+    details:
+      - Development of a framework for efficient random checking of test results to assure quality
+      - Collecting ad hoc data to guide solutions for problems impacting production
+      - Providing support for round-the-clock analysis of up to 100.000 daily qPCR samples
+      - Fully automated collection and regular visualisation of key performance indicators
