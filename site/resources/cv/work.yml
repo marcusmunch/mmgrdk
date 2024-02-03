@@ -1,7 +1,12 @@
+novo:
+  - title: "Data scientist"
+    workplace: "Novo Nordisk"
+    year: "Feb 2024 --"
+    department: "Real-World Science -- Rare Disease & AT"
 ssi:
   - title: "Data scientist"
     workplace: "Statens Serum Institut"
-    year: "May 2022 --"
+    year: "May 2022 -- Jan 2024"
     department: "Disease Dynamics and Forecasting, Epidemiological Research"
     details:
       - Pre-processing of data from national Danish registries for research and health surveillance purposes
