@@ -32,7 +32,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-r@v2
         with:
@@ -51,7 +51,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-result
           path: |
@@ -63,9 +63,9 @@ jobs:
     needs: [cleanup, build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@master
+      - uses: actions/download-artifact@v4
         id: download
         with:
           name: build-result
