@@ -7,7 +7,7 @@ links:
   - label: GitHub
     url: "https://github.com/MarcusMunch"
   - label: email
-    url: "hello@marcusmunch.dk"
+    url: "mailto:%68%65%6c%6c%6f%40%6d%61%72%63%75%73%6d%75%6e%63%68%2e%64%6b"
   - label: CV
     url: "cv.pdf"
 output: postcards::solana

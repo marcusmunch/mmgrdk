@@ -4,7 +4,7 @@ surname: Grünewald
 position: "Data Scientist"
 profilepic: "marcus.png"
 www: marcusmunch.dk
-email: "hello@marcusmunch.dk"
+email: "`r URLdecode('%68%65%6C%6C%6F%40%6D%61%72%63%75%73%6D%75%6E%63%68%2E%64%6B')`"
 github: marcusmunch
 linkedin: marcusmunch
 aboutme: Data scientist with a background in microbiology
